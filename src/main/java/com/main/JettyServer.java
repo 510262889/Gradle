@@ -1,7 +1,9 @@
 package com.main;
 
+import org.apache.jasper.servlet.JspServlet;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 
@@ -11,7 +13,7 @@ import java.net.ServerSocket;
 
 public class JettyServer {
 
-    /*private String webAppDir;
+    private String webAppDir;
     private int port;
     private String context;
     private boolean running = false;
@@ -50,7 +52,7 @@ public class JettyServer {
             throw new IllegalStateException( "port: " + port + " already in use!" );
 
         server = new Server();
-        Connector connector = getConnector();
+        ServerConnector connector = getConnector( server );
         connector.setPort( port );
         server.addConnector( connector );
         webApp = new WebAppContext();
@@ -87,8 +89,8 @@ public class JettyServer {
         }
     }
 
-    protected Connector getConnector() {
-        return new SelectChannelConnector();
+    protected ServerConnector getConnector( Server server ) {
+        return new ServerConnector( server );
     }
 
     private static boolean available( int port ) {
@@ -120,5 +122,5 @@ public class JettyServer {
             }
         }
         return false;
-    }*/
+    }
 }
